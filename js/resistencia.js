@@ -1,43 +1,43 @@
 
- function CrearResistencia (color1, color2, color3, color4) {
 
-  var colores = ['negro', 'cafe', 'rojo', 'naranja', 'amarillo', 'verde', 'morado', 'violeta', 'gris', 'blanco', 'plata', 'oro'];
+function valores(ceros) {
   function aleatorio(a,b){return Math.round(Math.random()*(b-a)+parseInt(a))}
+  var valor1 = aleatorio(1, 9);
+  var valor2 = aleatorio(0, 9);
+  var temporal = aleatorio(0, 9);
+  if (ceros) {
+    var ceros = "0";
+    function hola (){for(i = 0; i < temporal; i++){ceros += "0";} return ceros;}
+    var valor3 = hola();
+  }
+  else {
+    var valor3 = temporal;
+  }
+  var valor4 = aleatorio(0, 1);
+  return valor1.toString()+valor2.toString()+valor3+valor4.toString();
+}
 
-  this.color1 = $("#color1").attr("class", colores[aleatorio(1, 9)]);
-  this.color2 = $("#color2").attr("class", colores[aleatorio(0, 9)]);
-  this.color3 = $("#color3").attr("class", colores[aleatorio(0, 9)]);
-  this.color4 = $("#color4").attr("class", colores[aleatorio(10, 11)]);
+var colores = ['negro', 'cafe', 'rojo', 'naranja', 'amarillo', 'verde', 'morado', 'violeta', 'gris', 'blanco'];
+var tolerancia = ['plata', 'oro'];
 
- }
+var respuesta1 = valores(1);
+var respuesta2 = valores(1);
+var respuesta3 = valores(1);
+var respuesta4 = valores(1);
 
+$("#color1").attr("class", colores[respuesta1[0]]);
+$("#color2").attr("class", colores[respuesta1[1]]);
+$("#color3").attr("class", colores[respuesta1[2]]);
+$("#color4").attr("class", tolerancia[respuesta1[3]]);
 
-var resistencia = new CrearResistencia();
+console.log(respuesta1);
+console.log(respuesta2);
+console.log(respuesta3);
+console.log(respuesta4);
 
-
-
-
-// $("#color1").attr("class", resistencia.color1);
-
-// console.log(colores);
-
-
-// var colores = ['rojo', 'verde', 'azul', 'amarillo'];
-
-// console.log(a, b, c, d);
+// var valor3 = function(){for(i = 0; i < aleatorio(0, 9); i++){valor3 += "0";}}
 
 
-//
-//
-//
-//
-//
-//
-// function aleatorio(a,b){return Math.round(Math.random()*(b-a)+parseInt(a))}
-//
-// var porcentaje;
-//
-// var respuesta1_valor1 = aleatorio(1,9);
 // var respuesta1_valor2 = aleatorio(1,9);
 // var respuesta1_valor3 = aleatorio(1,9);
 // var respuesta1_valor4 = aleatorio(1,2);
