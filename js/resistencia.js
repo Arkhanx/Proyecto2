@@ -1,29 +1,25 @@
 
-function CrearResistencia (color1, color2, color3, color4) {
+ function CrearResistencia (color1, color2, color3, color4) {
 
-  this.color1 = color1;
-  this.color2 = color2;
-  this.color3 = color3;
-  this.color4 = color4;
+  var colores = ['negro', 'cafe', 'rojo', 'naranja', 'amarillo', 'verde', 'morado', 'violeta', 'gris', 'blanco', 'plata', 'oro'];
+  function aleatorio(a,b){return Math.round(Math.random()*(b-a)+parseInt(a))}
 
-}
+  this.color1 = $("#color1").attr("class", colores[aleatorio(1, 9)]);
+  this.color2 = $("#color2").attr("class", colores[aleatorio(0, 9)]);
+  this.color3 = $("#color3").attr("class", colores[aleatorio(0, 9)]);
+  this.color4 = $("#color4").attr("class", colores[aleatorio(10, 11)]);
+
+ }
 
 
-var colores = ['rojo', 'verde', 'azul', 'amarillo'];
-colores = colores.sort(function() {return Math.random()-0.5});
-// for(color of colores){
-//     console.log(color);
-// }
+var resistencia = new CrearResistencia();
 
-// colores.forEach(function (item, index, array) {console.log(item, index);});
-//Jpña
-var resistencia = new CrearResistencia(colores[0], colores[1], colores[2], colores[3]);
 
-const NUMERO = 200;
 
-console.log(NUMERO);
 
-console.log(resistencia);
+// $("#color1").attr("class", resistencia.color1);
+
+// console.log(colores);
 
 
 // var colores = ['rojo', 'verde', 'azul', 'amarillo'];
