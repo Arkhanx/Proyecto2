@@ -1,0 +1,54 @@
+<svg class="svg" version="1.1"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 x="0px" y="0px" width="950.5px" height="204.8px" viewBox="0 0 950.5 204.8" enable-background="new 0 0 950.5 204.8"
+	 xml:space="preserve">
+<defs>
+</defs>
+<g id="parabola_copia" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://web.resource.org/cc/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:output_extension="org.inkscape.output.svg.inkscape" sodipodi:docbase="D:\1dnu72" sodipodi:docname="Resistencia.svg" inkscape:version="0.45.1" sodipodi:version="0.32">
+	<g id="g11662_1_">
+
+			<linearGradient id="rect10381_2_" gradientUnits="userSpaceOnUse" x1="61.5707" y1="173.3034" x2="61.7548" y2="208.1964" gradientTransform="matrix(0.9958 0 0 -1.2223 826.3475 339.6133)">
+			<stop  offset="0" style="stop-color:#DDDDDD"/>
+			<stop  offset="1" style="stop-color:#DDDDDD;stop-opacity:0"/>
+		</linearGradient>
+
+			<rect id="rect10381_1_" x="825.3" y="89.9" fill="url(#rect10381_2_)" stroke="#000000" stroke-width="0.531" width="125" height="25"/>
+
+			<linearGradient id="rect21769_2_" gradientUnits="userSpaceOnUse" x1="61.8522" y1="173.3014" x2="62.0364" y2="208.1944" gradientTransform="matrix(0.9979 0 0 -1.2223 0.9359 339.6046)">
+			<stop  offset="0" style="stop-color:#DDDDDD"/>
+			<stop  offset="1" style="stop-color:#DDDDDD;stop-opacity:0"/>
+		</linearGradient>
+
+			<rect id="rect21769_1_" x="0.3" y="89.9" fill="url(#rect21769_2_)" stroke="#000000" stroke-width="0.5316" width="125" height="25"/>
+
+			<linearGradient id="rect5161_2_" gradientUnits="userSpaceOnUse" x1="474.3702" y1="90.5322" x2="476.8535" y2="294.339" gradientTransform="matrix(1.0003 0 0 -0.875 4.863056e-002 231.37)">
+			<stop  offset="0" style="stop-color:#EEAA00"/>
+			<stop  offset="1" style="stop-color:#EEAA00;stop-opacity:0"/>
+		</linearGradient>
+
+			<rect id="rect5161_1_" x="250.3" y="14.9" fill="url(#rect5161_2_)" stroke="#EEAA00" stroke-width="2.1179" stroke-miterlimit="1" width="450" height="175"/>
+
+			<linearGradient id="path5157_2_" gradientUnits="userSpaceOnUse" x1="168.0554" y1="45.9784" x2="243.854" y2="316.5494" gradientTransform="matrix(1 0 0 -1 0.2655 257.7778)">
+			<stop  offset="0" style="stop-color:#EEAA00"/>
+			<stop  offset="1" style="stop-color:#EEAA00;stop-opacity:0"/>
+		</linearGradient>
+		<path id="path5157_1_" sodipodi:nodetypes="ccccccc" fill="url(#path5157_2_)" stroke="#EEAA00" stroke-width="2" d="M250.3,9.9
+			c0,0-25-20-75,0c-25,30,0,65-50,80c0,10,0,15,0,25c50,15,25,50,50,80c50,20,75,0,75,0V9.9z"/>
+
+			<linearGradient id="path5159_2_" gradientUnits="userSpaceOnUse" x1="729.9362" y1="40.6819" x2="782.2656" y2="289.291" gradientTransform="matrix(1 0 0 -1 0.2655 257.7778)">
+			<stop  offset="0" style="stop-color:#EEAA00"/>
+			<stop  offset="1" style="stop-color:#EEAA00;stop-opacity:0"/>
+		</linearGradient>
+		<path id="path5159_1_" sodipodi:nodetypes="ccccccc" fill="url(#path5159_2_)" stroke="#EEAA00" stroke-width="2" d="M700.3,9.9
+			v185c0,0,25,20,75,0c25-30,0-65,50-80c0-10,0-15,0-25c-50-15-25-50-50-80C725.3-10.1,700.3,9.9,700.3,9.9z"/>
+		<path id="color1" sodipodi:nodetypes="ccccc" stroke="#EEAA00" d="M300.3,14.9c0-10,50-10,50,0
+			c0,25-5,150-5,175c0,10-50,10-50,0C295.3,164.9,300.3,39.9,300.3,14.9z"/>
+		<path id="color2" sodipodi:nodetypes="ccccc" stroke="#EEAA00" d="M375.3,14.9c0-10,50-10,50,0
+			c0,25-5,150-5,175c0,10-50,10-50,0C370.3,164.9,375.3,39.9,375.3,14.9z"/>
+		<path id="color3" sodipodi:nodetypes="ccccc" stroke="#EEAA00" d="M450.3,14.9c0-10,50-10,50,0
+			c0,25-5,150-5,175c0,10-50,10-50,0C445.3,164.9,450.3,39.9,450.3,14.9z"/>
+		<path id="color4" sodipodi:nodetypes="ccccc" stroke="#EEAA00" d="M550.3,14.9c0-10,50-10,50,0
+			c0,25-5,150-5,175c0,10-50,10-50,0C545.3,164.9,550.3,39.9,550.3,14.9z"/>
+	</g>
+</g>
+</svg>

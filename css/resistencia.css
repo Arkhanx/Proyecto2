@@ -1,0 +1,70 @@
+.negro {
+  fill: #000;
+}
+.cafe {
+  fill: #871c00;
+}
+.rojo {
+  fill: #e90000;
+}
+.naranja {
+  fill: #e96900;
+}
+.amarillo {
+  fill: #e9e000;
+}
+.verde {
+  fill: #52e900;
+}
+.morado {
+  fill: #9100e9;
+}
+.violeta {
+  fill: #e900cb;
+}
+.gris {
+  fill: #616161;
+}
+.blanco {
+  fill: #fff;
+}
+.plata {
+  fill: #b8b8b8;
+}
+.oro {
+  fill: #ecf105;
+}
+.respuestas {
+  margin-top: 5em;
+}
+.respuestas span {
+  font-size: 1.5em;
+}
+.cajita {
+  width: 50%;
+  margin: auto;
+}
+.boton {
+  margin-top: 3em;
+}
+.svg2 {
+  margin: auto;
+  width: 50%;
+}
+.svg {
+  width: 100%;
+  margin: auto;
+}
+.puntaje__caja {
+  text-align: center;
+  font-size: 5em;
+}
+.puntaje__caja--ganaste {
+  color: #008000;
+}
+.puntaje__caja--perdiste {
+  color: #b90000;
+}
+.selecciona {
+  text-align: center;
+}

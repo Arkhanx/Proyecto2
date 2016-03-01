@@ -1,0 +1,45 @@
+//output: resistencia.html
+<!DOCTYPE html>
+html(lang="en")
+head
+  meta(charset="UTF-8")
+  title resistencia
+  meta(name="viewport", content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0")
+  link(rel="stylesheet", href="css/bootstrap.min.css")
+  link(rel="stylesheet", href="css/resistencia.css")
+body
+  
+  .svg2
+    include img/resistencia.svg
+  
+  .container
+    form.row#respuestas
+      .col-sm-6.respuestas
+        .cajita
+          input#valor1(type="radio", name="respuesta")
+          span#texto1
+      .col-sm-6.respuestas
+        .cajita
+          input#valor2(type="radio", name="respuesta") 
+          span#texto2
+      .col-sm-6.respuestas
+        .cajita
+          input#valor3(type="radio", name="respuesta")
+          span#texto3
+      .col-sm-6.respuestas
+        .cajita
+          input#valor4(type="radio", name="respuesta")
+          span#texto4
+  input#enviar.btn.btn-primary.center-block.boton(type="button", value="Enviar !")
+  
+  h1#selecciona.selecciona
+  div.puntaje.col-xs-6
+    div.puntaje__caja
+      h2 Ganaste!
+      p#ganaste.puntaje__caja--ganaste 0
+  div.puntaje.col-xs-6
+    div.puntaje__caja
+      h3 Perdiste!
+      p#perdiste.puntaje__caja--perdiste 0
+  script(src="js/jquery.js")
+  script(src="js/resistencia.js")
