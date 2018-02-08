@@ -22,7 +22,7 @@ let colores = ['negro', 'cafe', 'rojo', 'naranja', 'amarillo', 'verde', 'azul', 
     // Arrays de colores para la tolerancia de la resistencia.
     tolerancia = ['plata', 'oro'],
     // Valores para imprimir en pantalla junto con los valores en formato de ejemplo "120001 - 10%".
-    valorTolerancia = [' - 10%', ' - 5%'];
+    valorTolerancia = ['Ω ±10%', 'Ω ±5%'];
 
 // Ejecutar funcion "valores" para almacenar en variables valores de resistencia completas aleatorios en formato "120001"
 let respuesta1 = valores(),
@@ -42,34 +42,51 @@ $("#color3").attr("class", colores[respuesta1.slice(2, -1).length]);
 $("#color4").attr("class", tolerancia[respuesta1[respuesta1.length-1]]);
 
 
-// Se utiliza jquery para escribir en pantalla con divs los valores de las respuestas, y se utiliza .slice para quitar el ultimo digito ya que este representa la tolerancia en el ejemplo "120001" el resultado seria "12000".
-// Luego de esto se concadena el resultado del array "valorTolerancia" con el indice resultado del ultimo digito de "respuesta#" en el ejemplo "120001" el resultado es "1" y este se pasa como indice al array "valorTolerancia".
 
-for (var i = 1; i <= 4; i++) {
+// Se crea un array que almace todas las variables respuestas para luego desordenarlas y tulizarlas para imprimir en pantalla.
+let respuesta = [respuesta1,respuesta2,respuesta3,respuesta4];
+// Se desordena el array respuestas para crear un orden de respuestas aleatorias al imprimirlas y así evitar que la respuesta correcta este siempre en la misma posicion.
+respuesta = respuesta.sort(function() {return Math.random() - 0.5});
 
-  let respuesta = ["relleno",respuesta1,respuesta2,respuesta3,respuesta4];
-  $('#valor'+i).val(respuesta[i].slice(0, -1) + valorTolerancia[respuesta[i][respuesta[i].length-1]]);
-  $('#texto'+i).html(respuesta[i].slice(0, -1) + valorTolerancia[respuesta[i][respuesta[i].length-1]]);
 
-  console.log(respuesta[i] + "Esta es la respuesta");
+// Un for para escribir el resultado en pantalla para la opciones que debe elegir el usuario.
+for (var i = 0; i <= 3; i++) {
+  // Asignamos en el valor de las respuestas en el interno de los "inputs" que va a seleccionar el usuario para luego compararlos y saber la respuesta correcta.
+  $('#valor'+(i+1)).val(respuesta[i]);
+  // Se utiliza jquery para escribir en pantalla con divs los valores de las respuestas, y se utiliza .slice para quitar el ultimo digito ya que este representa la tolerancia en el ejemplo "120001" el resultado seria "12000".
+  // Luego de esto se concadena el resultado del array "valorTolerancia" con el indice resultado del ultimo digito de "respuesta#" en el ejemplo "120001" el resultado es "1" y este se pasa como indice al array "valorTolerancia".
+  // Aqui utilizamos la variable "i" del for para muchas cosas, la primera es para indicarle que debe escribir en todos los ids "texto#", utilizo el "i+1" debido a que no tengo ningun id en el html de valor que comience por 0.
+  // Luego utilizamos nuevamente la variable "i" para acceder al inidice del array "respuesta".
+  $('#texto'+(i+1)).html(respuesta[i].slice(0, -1) + valorTolerancia[respuesta[i][respuesta[i].length-1]]);
 
 }
 
-//
-// $('#valor1').val(respuesta1.slice(0, -1) + valorTolerancia[respuesta1[respuesta1.length-1]]);
-// $('#texto1').html(respuesta1.slice(0, -1) + valorTolerancia[respuesta1[respuesta1.length-1]]);
-//
-// $('#valor2').val(respuesta2.slice(0, -1) + valorTolerancia[respuesta2[respuesta2.length-1]]);
-// $('#texto2').html(respuesta2.slice(0, -1) + valorTolerancia[respuesta2[respuesta2.length-1]]);
-//
-// $('#valor3').val(respuesta3.slice(0, -1) + valorTolerancia[respuesta3[respuesta3.length-1]]);
-// $('#texto3').html(respuesta3.slice(0, -1) + valorTolerancia[respuesta3[respuesta3.length-1]]);
-//
-// $('#valor4').val(respuesta4.slice(0, -1) + valorTolerancia[respuesta4[respuesta4.length-1]]);
-// $('#texto4').html(respuesta4.slice(0, -1) + valorTolerancia[respuesta4[respuesta4.length-1]]);
-
-
-console.log(respuesta1);
 console.log(respuesta2);
 console.log(respuesta3);
 console.log(respuesta4);
+
+// Definimos variables para almacenar la puntiacion del usuario.
+let ganaste = 1;
+let perdiste = 1;
+
+// Declamos utilizando jquery que al hacer click en el boton enviar se ejecute la funcion que va a comprobar la respuesta y a comprobar el resultado para asignar la puntuacion.
+$("#enviar").click(function(){
+
+  // Almacenamos en la variable "elegido" el valor de la respuesta del usuario.
+  let elegido = $('input:radio[name=respuesta]:checked').val();
+
+  // Si el usuario no ha seleccionado ninguna respuesta se indica en pantalla que debe hacerlo.
+  if (elegido == undefined) {
+    $("#selecciona").html("Selecciona una respuesta.");
+  }
+  // Se comprueba que el valor elegido por el usuario sea igual a la variable que contiene la respuesta correcta para saber si ha ganado, si eligio bien la puntiacion de "ganaste" aumenta en 1.
+  else if (elegido == respuesta1) {
+    $("#ganaste").html(ganaste++);
+    console.log("Bien!!!!!!");
+  }
+  // Se comprueba que el valor elegido por el usuario sea igual a la variable que contiene la respuesta correcta para saber si ha ganado, si eligio mal la puntiacion de "perdiste" aumenta en 1.
+  else {
+    $("#perdiste").html(perdiste++);
+    console.log("Mal!!!!!!!");
+  }
+})
