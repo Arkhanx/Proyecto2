@@ -1,3 +1,12 @@
+
+let ganaste = 1;
+let perdiste = 1;
+
+// juego();
+
+function juego() {
+
+
 // Esta funcion llamada "valores" crea toda la estructura de los valores de una resistencia, por ejemplo 120001.
 // En el ejemplo "120001" el valor final corresponde a la tolelancia.
 function valores() {function aleatorio(a,b){return Math.round(Math.random()*(b-a)+parseInt(a))}
@@ -53,6 +62,8 @@ respuesta = respuesta.sort(function() {return Math.random() - 0.5});
 for (var i = 0; i <= 3; i++) {
   // Asignamos en el valor de las respuestas en el interno de los "inputs" que va a seleccionar el usuario para luego compararlos y saber la respuesta correcta.
   $('#valor'+(i+1)).val(respuesta[i]);
+  console.log(document.getElementById('valor'+(i+1)).value);
+  // console.log($('#valor'+(i+1)).val(respuesta[i]));
   // Se utiliza jquery para escribir en pantalla con divs los valores de las respuestas, y se utiliza .slice para quitar el ultimo digito ya que este representa la tolerancia en el ejemplo "120001" el resultado seria "12000".
   // Luego de esto se concadena el resultado del array "valorTolerancia" con el indice resultado del ultimo digito de "respuesta#" en el ejemplo "120001" el resultado es "1" y este se pasa como indice al array "valorTolerancia".
   // Aqui utilizamos la variable "i" del for para muchas cosas, la primera es para indicarle que debe escribir en todos los ids "texto#", utilizo el "i+1" debido a que no tengo ningun id en el html de valor que comience por 0.
@@ -61,32 +72,43 @@ for (var i = 0; i <= 3; i++) {
 
 }
 
-console.log(respuesta2);
-console.log(respuesta3);
-console.log(respuesta4);
+// console.log(respuesta2);
+// console.log(respuesta3);
+// console.log(respuesta4);
+//
 
 // Definimos variables para almacenar la puntiacion del usuario.
-let ganaste = 1;
-let perdiste = 1;
+
 
 // Declamos utilizando jquery que al hacer click en el boton enviar se ejecute la funcion que va a comprobar la respuesta y a comprobar el resultado para asignar la puntuacion.
+// Almacenamos en la variable "elegido" el valor de la respuesta del usuario.
+  return respuesta1;
+
+}
+
+console.log(juego() + " Respuesta correcta");
+
+
+
 $("#enviar").click(function(){
 
-  // Almacenamos en la variable "elegido" el valor de la respuesta del usuario.
   let elegido = $('input:radio[name=respuesta]:checked').val();
-
+  console.log(elegido + " Esto eleigio");
   // Si el usuario no ha seleccionado ninguna respuesta se indica en pantalla que debe hacerlo.
   if (elegido == undefined) {
     $("#selecciona").html("Selecciona una respuesta.");
   }
   // Se comprueba que el valor elegido por el usuario sea igual a la variable que contiene la respuesta correcta para saber si ha ganado, si eligio bien la puntiacion de "ganaste" aumenta en 1.
-  else if (elegido == respuesta1) {
+  else if (elegido == juego()) {
     $("#ganaste").html(ganaste++);
+    $("#selecciona").html("");
     console.log("Bien!!!!!!");
   }
   // Se comprueba que el valor elegido por el usuario sea igual a la variable que contiene la respuesta correcta para saber si ha ganado, si eligio mal la puntiacion de "perdiste" aumenta en 1.
   else {
     $("#perdiste").html(perdiste++);
+    $("#selecciona").html("");
     console.log("Mal!!!!!!!");
   }
+
 })
