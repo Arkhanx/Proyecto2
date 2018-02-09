@@ -2,29 +2,41 @@
 let ganaste = 1;
 let perdiste = 1;
 
-// juego();
-
-function juego() {
-
-
 // Esta funcion llamada "valores" crea toda la estructura de los valores de una resistencia, por ejemplo 120001.
 // En el ejemplo "120001" el valor final corresponde a la tolelancia.
 function valores() {function aleatorio(a,b){return Math.round(Math.random()*(b-a)+parseInt(a))}
-  // Definicion de variables separadas por comas y con let para que se queden en el Scope.
-  let
-  // Primer valor de una resistencia, no puede ser menor a 1 ni mayor a 9.
-  valor1 = aleatorio(1, 9),
-  // Segundo valor de una resistencia.
-  valor2 = aleatorio(0, 9),
-  // Variable temporal para almacenar los "ceros" del for que se utiliza más abajo.
-  temporal = "",
-  // Un for que busca almacenar en la variable "valor3" una cantidad de string "ceros" de cantidad aleatoria.
-  valor3 = () => { for (i = 0; i < aleatorio(0, 9); i++) {temporal += "0";} return temporal;},
-  // Variable para almacenar valor que va a definir la tolerancia de la resistencia.
-  valor4 = aleatorio(0, 1);
-  // Retorna los valores de todas las variables como un string completo, todo el valor de la resistencia, en formato de ejemplo "120001".
-  return valor1.toString()+valor2.toString()+valor3()+valor4.toString();
+// Definicion de variables separadas por comas y con let para que se queden en el Scope.
+let
+// Primer valor de una resistencia, no puede ser menor a 1 ni mayor a 9.
+valor1 = aleatorio(1, 9),
+// Segundo valor de una resistencia.
+valor2 = aleatorio(0, 9),
+// Variable temporal para almacenar los "ceros" del for que se utiliza más abajo.
+temporal = "",
+// Un for que busca almacenar en la variable "valor3" una cantidad de string "ceros" de cantidad aleatoria.
+valor3 = () => { for (i = 0; i < aleatorio(0, 9); i++) {temporal += "0";} return temporal;},
+// Variable para almacenar valor que va a definir la tolerancia de la resistencia.
+valor4 = aleatorio(0, 1);
+// Retorna los valores de todas las variables como un string completo, todo el valor de la resistencia, en formato de ejemplo "120001".
+return [valor1.toString(),valor2.toString(),valor3(),valor4.toString()];
 }
+
+function variables() {
+
+  let respuesta1 = valores(),
+  respuesta2 = valores(),
+  respuesta3 = valores(),
+  respuesta4 = valores();
+
+return [respuesta1,respuesta2,respuesta3,respuesta4];
+}
+
+let respuesta1 = variables()[0],
+respuesta2 = variables()[1],
+respuesta3 = variables()[2],
+respuesta4 = variables()[3];
+
+function juego() {
 
 // Definicion de variables con arrays que almacenan los colores con nombres de variables definidas en el CCS para cambiar los colores de la resistencia.
 let colores = ['negro', 'cafe', 'rojo', 'naranja', 'amarillo', 'verde', 'azul', 'violeta', 'gris', 'blanco'],
@@ -34,10 +46,6 @@ let colores = ['negro', 'cafe', 'rojo', 'naranja', 'amarillo', 'verde', 'azul', 
     valorTolerancia = ['Ω ±10%', 'Ω ±5%'];
 
 // Ejecutar funcion "valores" para almacenar en variables valores de resistencia completas aleatorios en formato "120001"
-let respuesta1 = valores(),
-    respuesta2 = valores(),
-    respuesta3 = valores(),
-    respuesta4 = valores();
 
 // Se utiliza el $ de jquery para hacer referencia para cambiar la clase del en el CCS del SVG, se le pasa el array "colores" con el indice del valor 1 de la variable respuesta.
 // Es decir si la variable respues es "120001" se le pasa a colores el indice del resultado del primer digito de la variable "respuesta#" en el ejemplo "120001" seria así "colores[1]".
@@ -46,14 +54,16 @@ $("#color1").attr("class", colores[respuesta1[0]]);
 $("#color2").attr("class", colores[respuesta1[1]]);
 // Debido a que la tercera parte de la funcion "valores" es representado en "ceros" lo que hacemos en esta parte es pasar el array "colores" con el indice que del siguiente resultado:
 // "respuesta#" quitandole con ".slice(2, -1).length" los dos primeros digitos y el ultimo es decir si el ejemplo es "120001" despues del .slice seria 000 y despues de .length seria 3.
-$("#color3").attr("class", colores[respuesta1.slice(2, -1).length]);
+$("#color3").attr("class", colores[respuesta1[2].length]);
 // Se pasa el array "tolerancia" con el indice "respuesta#.length-1" lo cual representa el ultimo digito del formato de la funcion "valores", en el ejemplo "120001" seria = 1.
-$("#color4").attr("class", tolerancia[respuesta1[respuesta1.length-1]]);
+$("#color4").attr("class", tolerancia[respuesta1[3]]);
 
 
 
 // Se crea un array que almace todas las variables respuestas para luego desordenarlas y tulizarlas para imprimir en pantalla.
-let respuesta = [respuesta1,respuesta2,respuesta3,respuesta4];
+let respuesta = [respuesta1.join(""),respuesta2.join(""),respuesta3.join(""),respuesta4.join("")];
+
+console.log(respuesta);
 // Se desordena el array respuestas para crear un orden de respuestas aleatorias al imprimirlas y así evitar que la respuesta correcta este siempre en la misma posicion.
 respuesta = respuesta.sort(function() {return Math.random() - 0.5});
 
@@ -82,24 +92,20 @@ for (var i = 0; i <= 3; i++) {
 
 // Declamos utilizando jquery que al hacer click en el boton enviar se ejecute la funcion que va a comprobar la respuesta y a comprobar el resultado para asignar la puntuacion.
 // Almacenamos en la variable "elegido" el valor de la respuesta del usuario.
-  return respuesta1;
 
 }
-
-console.log(juego() + " Respuesta correcta");
 
 
 
 $("#enviar").click(function(){
 
   let elegido = $('input:radio[name=respuesta]:checked').val();
-  console.log(elegido + " Esto eleigio");
   // Si el usuario no ha seleccionado ninguna respuesta se indica en pantalla que debe hacerlo.
   if (elegido == undefined) {
     $("#selecciona").html("Selecciona una respuesta.");
   }
   // Se comprueba que el valor elegido por el usuario sea igual a la variable que contiene la respuesta correcta para saber si ha ganado, si eligio bien la puntiacion de "ganaste" aumenta en 1.
-  else if (elegido == juego()) {
+  else if (elegido == respuesta1.join("")) {
     $("#ganaste").html(ganaste++);
     $("#selecciona").html("");
     console.log("Bien!!!!!!");
@@ -110,5 +116,8 @@ $("#enviar").click(function(){
     $("#selecciona").html("");
     console.log("Mal!!!!!!!");
   }
+
+  variables();
+  juego();
 
 })
