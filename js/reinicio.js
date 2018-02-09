@@ -5,20 +5,20 @@ let perdiste = 1;
 // Esta funcion llamada "valores" crea toda la estructura de los valores de una resistencia, por ejemplo 120001.
 // En el ejemplo "120001" el valor final corresponde a la tolelancia.
 function valores() {function aleatorio(a,b){return Math.round(Math.random()*(b-a)+parseInt(a))}
-// Definicion de variables separadas por comas y con let para que se queden en el Scope.
-let
-// Primer valor de una resistencia, no puede ser menor a 1 ni mayor a 9.
-valor1 = aleatorio(1, 9),
-// Segundo valor de una resistencia.
-valor2 = aleatorio(0, 9),
-// Variable temporal para almacenar los "ceros" del for que se utiliza más abajo.
-temporal = "",
-// Un for que busca almacenar en la variable "valor3" una cantidad de string "ceros" de cantidad aleatoria.
-valor3 = () => { for (i = 0; i < aleatorio(0, 9); i++) {temporal += "0";} return temporal;},
-// Variable para almacenar valor que va a definir la tolerancia de la resistencia.
-valor4 = aleatorio(0, 1);
-// Retorna los valores de todas las variables como un string completo, todo el valor de la resistencia, en formato de ejemplo "120001".
-return [valor1.toString(),valor2.toString(),valor3(),valor4.toString()];
+  // Definicion de variables separadas por comas y con let para que se queden en el Scope.
+  let
+  // Primer valor de una resistencia, no puede ser menor a 1 ni mayor a 9.
+  valor1 = aleatorio(1, 9),
+  // Segundo valor de una resistencia.
+  valor2 = aleatorio(0, 9),
+  // Variable temporal para almacenar los "ceros" del for que se utiliza más abajo.
+  temporal = "",
+  // Un for que busca almacenar en la variable "valor3" una cantidad de string "ceros" de cantidad aleatoria.
+  valor3 = () => { for (i = 0; i < aleatorio(0, 9); i++) {temporal += "0";} return temporal;},
+  // Variable para almacenar valor que va a definir la tolerancia de la resistencia.
+  valor4 = aleatorio(0, 1);
+  // Retorna los valores de todas las variables como un string completo, todo el valor de la resistencia, en formato de ejemplo "120001".
+  return [valor1.toString(),valor2.toString(),valor3(),valor4.toString()];
 }
 
 function variables() {
@@ -31,10 +31,12 @@ function variables() {
 return [respuesta1,respuesta2,respuesta3,respuesta4];
 }
 
-let respuesta1 = variables()[0],
-respuesta2 = variables()[1],
-respuesta3 = variables()[2],
-respuesta4 = variables()[3];
+
+  let respuesta1 = variables()[0],
+  respuesta2 = variables()[1],
+  respuesta3 = variables()[2],
+  respuesta4 = variables()[3];
+
 
 function juego() {
 
