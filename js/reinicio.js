@@ -1,9 +1,7 @@
-
-let ganaste = 1;
-let perdiste = 1;
-
 // Esta funcion llamada "valores" crea toda la estructura de los valores de una resistencia, por ejemplo 120001.
 // En el ejemplo "120001" el valor final corresponde a la tolelancia.
+
+
 function valores() {function aleatorio(a,b){return Math.round(Math.random()*(b-a)+parseInt(a))}
   // Definicion de variables separadas por comas y con let para que se queden en el Scope.
   let
@@ -18,27 +16,8 @@ function valores() {function aleatorio(a,b){return Math.round(Math.random()*(b-a
   // Variable para almacenar valor que va a definir la tolerancia de la resistencia.
   valor4 = aleatorio(0, 1);
   // Retorna los valores de todas las variables como un string completo, todo el valor de la resistencia, en formato de ejemplo "120001".
-  return [valor1.toString(),valor2.toString(),valor3(),valor4.toString()];
+  return valor1.toString()+valor2.toString()+valor3()+valor4.toString();
 }
-
-function variables() {
-
-  let respuesta1 = valores(),
-  respuesta2 = valores(),
-  respuesta3 = valores(),
-  respuesta4 = valores();
-
-return [respuesta1,respuesta2,respuesta3,respuesta4];
-}
-
-
-  let respuesta1 = variables()[0],
-  respuesta2 = variables()[1],
-  respuesta3 = variables()[2],
-  respuesta4 = variables()[3];
-
-
-function juego() {
 
 // Definicion de variables con arrays que almacenan los colores con nombres de variables definidas en el CCS para cambiar los colores de la resistencia.
 let colores = ['negro', 'cafe', 'rojo', 'naranja', 'amarillo', 'verde', 'azul', 'violeta', 'gris', 'blanco'],
@@ -48,24 +27,33 @@ let colores = ['negro', 'cafe', 'rojo', 'naranja', 'amarillo', 'verde', 'azul', 
     valorTolerancia = ['Ω ±10%', 'Ω ±5%'];
 
 // Ejecutar funcion "valores" para almacenar en variables valores de resistencia completas aleatorios en formato "120001"
+function regulares() {
 
+  let respuesta1 = valores(),
+  respuesta2 = valores(),
+  respuesta3 = valores(),
+  respuesta4 = valores();
+
+return [respuesta1, respuesta2, respuesta3, respuesta4];
+}
+
+
+function juego(prueba1,prueba2,prueba3,prueba4) {
 // Se utiliza el $ de jquery para hacer referencia para cambiar la clase del en el CCS del SVG, se le pasa el array "colores" con el indice del valor 1 de la variable respuesta.
 // Es decir si la variable respues es "120001" se le pasa a colores el indice del resultado del primer digito de la variable "respuesta#" en el ejemplo "120001" seria así "colores[1]".
-$("#color1").attr("class", colores[respuesta1[0]]);
+$("#color1").attr("class", colores[prueba1[0]]);
 // El mismo proceso con el color 2 de la resistencia se pasa el array "colores" con el indice del segundo digito de "respuesta#".
-$("#color2").attr("class", colores[respuesta1[1]]);
+$("#color2").attr("class", colores[prueba1[1]]);
 // Debido a que la tercera parte de la funcion "valores" es representado en "ceros" lo que hacemos en esta parte es pasar el array "colores" con el indice que del siguiente resultado:
 // "respuesta#" quitandole con ".slice(2, -1).length" los dos primeros digitos y el ultimo es decir si el ejemplo es "120001" despues del .slice seria 000 y despues de .length seria 3.
-$("#color3").attr("class", colores[respuesta1[2].length]);
+$("#color3").attr("class", colores[prueba1.slice(2, -1).length]);
 // Se pasa el array "tolerancia" con el indice "respuesta#.length-1" lo cual representa el ultimo digito del formato de la funcion "valores", en el ejemplo "120001" seria = 1.
-$("#color4").attr("class", tolerancia[respuesta1[3]]);
+$("#color4").attr("class", tolerancia[prueba1[prueba1.length-1]]);
 
 
 
 // Se crea un array que almace todas las variables respuestas para luego desordenarlas y tulizarlas para imprimir en pantalla.
-let respuesta = [respuesta1.join(""),respuesta2.join(""),respuesta3.join(""),respuesta4.join("")];
-
-console.log(respuesta);
+let respuesta = [prueba1,prueba2,prueba3,prueba4];
 // Se desordena el array respuestas para crear un orden de respuestas aleatorias al imprimirlas y así evitar que la respuesta correcta este siempre en la misma posicion.
 respuesta = respuesta.sort(function() {return Math.random() - 0.5});
 
@@ -74,52 +62,53 @@ respuesta = respuesta.sort(function() {return Math.random() - 0.5});
 for (var i = 0; i <= 3; i++) {
   // Asignamos en el valor de las respuestas en el interno de los "inputs" que va a seleccionar el usuario para luego compararlos y saber la respuesta correcta.
   $('#valor'+(i+1)).val(respuesta[i]);
-  console.log(document.getElementById('valor'+(i+1)).value);
-  // console.log($('#valor'+(i+1)).val(respuesta[i]));
   // Se utiliza jquery para escribir en pantalla con divs los valores de las respuestas, y se utiliza .slice para quitar el ultimo digito ya que este representa la tolerancia en el ejemplo "120001" el resultado seria "12000".
   // Luego de esto se concadena el resultado del array "valorTolerancia" con el indice resultado del ultimo digito de "respuesta#" en el ejemplo "120001" el resultado es "1" y este se pasa como indice al array "valorTolerancia".
   // Aqui utilizamos la variable "i" del for para muchas cosas, la primera es para indicarle que debe escribir en todos los ids "texto#", utilizo el "i+1" debido a que no tengo ningun id en el html de valor que comience por 0.
   // Luego utilizamos nuevamente la variable "i" para acceder al inidice del array "respuesta".
   $('#texto'+(i+1)).html(respuesta[i].slice(0, -1) + valorTolerancia[respuesta[i][respuesta[i].length-1]]);
-
 }
-
+console.log(document.getElementById("valor1").value);
+console.log(document.getElementById("valor2").value);
+console.log(document.getElementById("valor3").value);
+console.log(document.getElementById("valor4").value);
 // console.log(respuesta2);
 // console.log(respuesta3);
 // console.log(respuesta4);
-//
-
-// Definimos variables para almacenar la puntiacion del usuario.
-
-
-// Declamos utilizando jquery que al hacer click en el boton enviar se ejecute la funcion que va a comprobar la respuesta y a comprobar el resultado para asignar la puntuacion.
-// Almacenamos en la variable "elegido" el valor de la respuesta del usuario.
-
 }
 
 
+// Definimos variables para almacenar la puntiacion del usuario.
 
+// Declamos utilizando jquery que al hacer click en el boton enviar se ejecute la funcion que va a comprobar la respuesta y a comprobar el resultado para asignar la puntuacion.
+let ganaste = 1;
+let perdiste = 1;
 $("#enviar").click(function(){
-
   let elegido = $('input:radio[name=respuesta]:checked').val();
-  // Si el usuario no ha seleccionado ninguna respuesta se indica en pantalla que debe hacerlo.
   if (elegido == undefined) {
     $("#selecciona").html("Selecciona una respuesta.");
   }
   // Se comprueba que el valor elegido por el usuario sea igual a la variable que contiene la respuesta correcta para saber si ha ganado, si eligio bien la puntiacion de "ganaste" aumenta en 1.
-  else if (elegido == respuesta1.join("")) {
+  else if (elegido == sentido1) {
     $("#ganaste").html(ganaste++);
-    $("#selecciona").html("");
-    console.log("Bien!!!!!!");
+    console.log("Bien!!!!!!!");
   }
   // Se comprueba que el valor elegido por el usuario sea igual a la variable que contiene la respuesta correcta para saber si ha ganado, si eligio mal la puntiacion de "perdiste" aumenta en 1.
   else {
     $("#perdiste").html(perdiste++);
-    $("#selecciona").html("");
     console.log("Mal!!!!!!!");
   }
+  sentido1 = regulares()[0];
+  sentido2 = regulares()[1];
+  sentido3 = regulares()[2];
+  sentido4 = regulares()[3];
 
-  variables();
-  juego();
+  // console.log(sentido1 + " Esto es sentido1");
+  // Almacenamos en la variable "elegido" el valor de la respuesta del usuario.
 
-})
+  // console.log(elegido + " Esto es lo elegido");
+  // Si el usuario no ha seleccionado ninguna respuesta se indica en pantalla que debe hacerlo.
+  // console.log(prueba1 + " Pruebameee!");
+
+  juego(sentido1,sentido2,sentido3,sentido4);
+});
