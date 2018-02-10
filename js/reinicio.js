@@ -77,13 +77,10 @@ console.log(document.getElementById("valor4").value);
 // console.log(respuesta4);
 }
 
-
-// Definimos variables para almacenar la puntiacion del usuario.
-
 // Declamos utilizando jquery que al hacer click en el boton enviar se ejecute la funcion que va a comprobar la respuesta y a comprobar el resultado para asignar la puntuacion.
 let ganaste = 1;
 let perdiste = 1;
-$("#enviar").click(function(){
+function ajugar(){
   let elegido = $('input:radio[name=respuesta]:checked').val();
   if (elegido == undefined) {
     $("#selecciona").html("Selecciona una respuesta.");
@@ -109,6 +106,15 @@ $("#enviar").click(function(){
   // console.log(elegido + " Esto es lo elegido");
   // Si el usuario no ha seleccionado ninguna respuesta se indica en pantalla que debe hacerlo.
   // console.log(prueba1 + " Pruebameee!");
-
   juego(sentido1,sentido2,sentido3,sentido4);
+}
+
+// Definimos variables para almacenar la puntiacion del usuario.
+
+$("#enviar").click(function(){
+
+  ajugar();
+
 });
+
+ajugar();
