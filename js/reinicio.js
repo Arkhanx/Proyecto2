@@ -52,10 +52,10 @@ $("#color4").attr("class", tolerancia[prueba1[prueba1.length-1]]);
 
 
 
-// Se crea un array que almace todas las variables respuestas para luego desordenarlas y tulizarlas para imprimir en pantalla.
-let respuesta = [prueba1,prueba2,prueba3,prueba4];
+// Se crea un array que almacene todas las variables respuestas para luego desordenarlas y tulizarlas para imprimir en pantalla.
+let respuesta = [prueba1,prueba2,prueba3,prueba4].sort(function() {return Math.random() - 0.5});
 // Se desordena el array respuestas para crear un orden de respuestas aleatorias al imprimirlas y así evitar que la respuesta correcta este siempre en la misma posicion.
-respuesta = respuesta.sort(function() {return Math.random() - 0.5});
+// respuesta = respuesta.sort(function() {return Math.random() - 0.5});
 
 
 // Un for para escribir el resultado en pantalla para la opciones que debe elegir el usuario.
@@ -66,8 +66,11 @@ for (var i = 0; i <= 3; i++) {
   // Luego de esto se concadena el resultado del array "valorTolerancia" con el indice resultado del ultimo digito de "respuesta#" en el ejemplo "120001" el resultado es "1" y este se pasa como indice al array "valorTolerancia".
   // Aqui utilizamos la variable "i" del for para muchas cosas, la primera es para indicarle que debe escribir en todos los ids "texto#", utilizo el "i+1" debido a que no tengo ningun id en el html de valor que comience por 0.
   // Luego utilizamos nuevamente la variable "i" para acceder al inidice del array "respuesta".
-  $('#texto'+(i+1)).html(respuesta[i].slice(0, -1) + valorTolerancia[respuesta[i][respuesta[i].length-1]]);
+  $('#texto'+(i+1)).html(respuesta[i].slice(0, -1) + valorTolerancia[respuesta[i][respuesta[i].length-1]] + "Probando");
+  console.log("esto "+ respuesta[1].length );
 }
+
+console.log("esto "+ respuesta[i] );
 console.log(document.getElementById("valor1").value);
 console.log(document.getElementById("valor2").value);
 console.log(document.getElementById("valor3").value);
@@ -118,3 +121,5 @@ $("#enviar").click(function(){
 });
 
 ajugar();
+
+Prueba de Visual Studio Code
